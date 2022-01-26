@@ -64,7 +64,7 @@
         newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
         let nt = convertTime(newTime);
 
-
+        // Uncover and print converted metric time
         $(document).ready(function () {
             $("#Submit").click(function () {
                 console.log("\nMetric time after conversion");
