@@ -64,12 +64,16 @@
         newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
         let nt = convertTime(newTime);
 
-        // Uncover and print converted metric time
+        // Show converted metric time
         $(document).ready(function () {
             $("#Submit").click(function () {
-                console.log("\nMetric time after conversion");
-                console.log(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'))
-                console.log(nt.day + ' ' + nt.date + ' ' + nt.month + ' ' + nt.year);
+                $("#showTimes").show();
+            });
+        });
+
+        // Output converted metric time
+        $(document).ready(function () {
+            $("#Submit").click(function () {
                 $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'));
                 $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
             });
@@ -83,7 +87,6 @@
             t.date = time.getDate();
             t.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][time.getDay()];
             let remain = ((time.getHours() * 60) + time.getMinutes()) * 60 + time.getSeconds();
-
             remain = remain * 1000000 / 86400;
             t.mhrs = Math.floor(remain / 100000);
             remain -= t.mhrs * 100000;
