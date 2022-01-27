@@ -17,11 +17,11 @@
     <style type="text/css">
         #toMetric {
             display: none
-        };
+        }
+
         #showTimes {
             display: none
-        };
-
+        }
     </style>
 </head>
 
@@ -71,12 +71,20 @@
             });
         });
 
+        // Get inputs of time to convert
+        $(document).ready(function () {
+            $("#Submit").click(function () {
+                alert("Year " + $("#year").val());
+            });
+        });
         // Output converted metric time
         $(document).ready(function () {
+
             $("#Submit").click(function () {
                 $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'));
                 $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
             });
+
         });
 
 
@@ -106,13 +114,13 @@
     <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
     <div id="toMetric">
         <!-- TODO: Get input from dropdown menu -->
+        <p>Year: <input type="number" id="year" name="year" value=""></p>
         <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p>
 
-        <!-- TODO Print Results -->
+        <!-- Print Results -->
         <button id="Submit">Submit</button>
         <div id="showTimes">
-            <!-- Problem: not hiding -->
-            <h2>Converted Metric Time</h2>   
+            <h2>Converted Metric Time</h2>
             <p id="convTime">time shows here</p>
             <p id="convDate">date shows here</p>
         </div>
