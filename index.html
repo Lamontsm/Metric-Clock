@@ -71,11 +71,15 @@
             });
         });
 
+        
         // Get inputs of time to convert
         $(document).ready(function () {
+            $('#year').val(nYear);
             $("#Submit").click(function () {
-                alert("Year " + $("#year").val());
+                nYear = $("#year").val();
             });
+            // TODO: Now do the other inputs
+
         });
         // Output converted metric time
         $(document).ready(function () {
