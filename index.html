@@ -70,16 +70,21 @@
                 $("#showTimes").show();
             });
         });
-
         
         // Get inputs of time to convert
         $(document).ready(function () {
             $('#year').val(nYear);
+            $('#month').val(nMonth);
+            $('#date').val(nDate);
+
             $("#Submit").click(function () {
                 nYear = $("#year").val();
+                nMonth = $("#month").val();
+                nDate = $("#date").val();
+                alert("Date is " + nDate);
             });
+            
             // TODO: Now do the other inputs
-
         });
         // Output converted metric time
         $(document).ready(function () {
@@ -119,6 +124,22 @@
     <div id="toMetric">
         <!-- TODO: Get input from dropdown menu -->
         <p>Year: <input type="number" id="year" name="year" value=""></p>
+        <label for="month">Month: </label>
+        <select name="month" id="month">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+        <p>Date: <input type="number" id="date" name="date" value=""></p>
         <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p>
 
         <!-- Print Results -->
