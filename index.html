@@ -53,16 +53,15 @@
 
         // Convert input time to metric  
         time = new Date();  // For plugging in the defaults
-        let nYear = 2022;  //time.getFullYear();
-        let nMonth = 0;   //time.getMonth();
-        let nDate = 22;    //time.getDate(); not zero-based
+        let nYear = time.getFullYear();
+        let nMonth = time.getMonth();
+        let nDate = time.getDate(); //not zero-based
         let nTimeZone = -8;  //time.getTimeZoneOffset()/60
         let dayLightSav = 0; //Standard time = 0, daylight saving = -1
         let nHours = 22;   //time.getHours() + OFFSET + nTimeZone;
         let nMins = 0;    //time.getMinutes();
         let nSecs = 0;    //time.getSeconds();
-        newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
-        let nt = convertTime(newTime);
+
 
         // Show converted metric time
         $(document).ready(function () {
@@ -70,7 +69,7 @@
                 $("#showTimes").show();
             });
         });
-        
+
         // Get inputs of time to convert
         $(document).ready(function () {
             $('#year').val(nYear);
@@ -83,9 +82,13 @@
                 nDate = $("#date").val();
                 alert("Date is " + nDate);
             });
-            
+
             // TODO: Now do the other inputs
         });
+        
+        // Calculate new time
+        newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
+        let nt = convertTime(newTime);
         // Output converted metric time
         $(document).ready(function () {
 
@@ -138,7 +141,7 @@
             <option value="9">October</option>
             <option value="10">November</option>
             <option value="11">December</option>
-          </select>
+        </select>
         <p>Date: <input type="number" id="date" name="date" value=""></p>
         <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p>
 
