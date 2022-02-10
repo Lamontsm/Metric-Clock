@@ -84,7 +84,7 @@
         //     });
 
             // TODO: Now do the other inputs
-        });
+        // });
         
         // Calculate new time
         newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
@@ -126,7 +126,14 @@
     <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
     <div id="toMetric">
         <!-- TODO: Get input from dropdown menu -->
-        <p>Year: <input type="number" id="year" name="year" value=""></p>
+
+       
+            <label for="newtime">Date and time to convert from </label>
+            <input type="datetime-local" id="newtime" name="newtime">
+            <input type="submit" value="Submit">
+        
+
+        <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
         <label for="month">Month: </label>
         <select name="month" id="month">
             <option value="0">January</option>
@@ -141,7 +148,7 @@
             <option value="9">October</option>
             <option value="10">November</option>
             <option value="11">December</option>
-        </select>
+        </select> -->
         <p>Date: <input type="number" id="date" name="date" value=""></p>
         <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p>
 
