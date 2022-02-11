@@ -71,6 +71,11 @@
         });
 
         // Get inputs of time to convert
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                alert("Text: " + $("#test").text());
+            });
+        });
         // $(document).ready(function () {
         //     $('#year').val(nYear);
         //     $('#month').val(nMonth);
@@ -83,9 +88,9 @@
         //         alert("Date is " + nDate);
         //     });
 
-            // TODO: Now do the other inputs
+        // TODO: Now do the other inputs
         // });
-        
+
         // Calculate new time
         newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
         let nt = convertTime(newTime);
@@ -127,11 +132,11 @@
     <div id="toMetric">
         <!-- TODO: Get input from dropdown menu -->
 
-       
+        <form>
             <label for="newtime">Date and time to convert from </label>
             <input type="datetime-local" id="newtime" name="newtime">
-            <input type="submit" value="Submit">
-        
+            <input id="choosetime" type="submit" value="Submit">
+        </form>
 
         <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
         <label for="month">Month: </label>
@@ -152,8 +157,8 @@
         <p>Date: <input type="number" id="date" name="date" value=""></p>
         <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p>
 
-<!-- retrieve date and time with HTML input https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_datetime-local-->
-        
+        <!-- retrieve date and time with HTML input https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_datetime-local-->
+
         <!-- Print Results -->
         <button id="Submit">Submit</button>
         <div id="showTimes">
