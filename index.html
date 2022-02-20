@@ -69,11 +69,12 @@
                 $("#showTimes").show();
             });
         });
-
+        let newTime;
         // Get inputs of time to convert
         $(document).ready(function () {
             $("#Submit").click(function () {
-                alert("Text: " + $("#newtime").text());
+                newTime = $(("#newtime").text());
+                console.log("Text: " + newTime);
             });
         });
 
@@ -93,11 +94,10 @@
         // });
 
         // Calculate new time
-        newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
+        // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
         let nt = convertTime(newTime);
         // Output converted metric time
         $(document).ready(function () {
-
             $("#Submit").click(function () {
                 $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'));
                 $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
@@ -135,7 +135,7 @@
 
         <form>
             <label for="newtime">Date and time to convert from </label>
-            <input type="datetime-local" id="newtime" name="newtime">
+            <input type="datetime-local" id="newtime" name="newtime" value="">
             <input id="choosetime" type="submit" value="Submit">
         </form>
 
