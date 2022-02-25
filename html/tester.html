@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        <h1>Toggle hide and show example</h1>
+<button class="toggleDisplay">Hide Div</button>
+<h2>Click on the above button to hide the div below</h2>
+<div class="div-visible">
+<p>This is a div element</p>
+</div>
+<script>
+   document .querySelector(".toggleDisplay") .addEventListener("click", toggleDivDisplay);
+   function toggleDivDisplay() {
+      var x = document.querySelector(".div-visible");
+      if (x.style.display === "none") {
+         x.style.display = "block";
+      } else {
+         x.style.display = "none";
+      }
+   }
+        // $("#testing").hide();
+        // let x = document.getElementByID("testing");
+        // x.style.display = 'block';
+    </script>
+    <p>Testing</p>
+    <div id="testing">
+        <p>This is inside the Div</p>
+    </div>
+</body>
+
+</html>
