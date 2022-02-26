@@ -10,31 +10,36 @@
 </head>
 
 <body>
-    <script>
-        <h1>Toggle hide and show example</h1>
-<button class="toggleDisplay">Hide Div</button>
-<h2>Click on the above button to hide the div below</h2>
-<div class="div-visible">
-<p>This is a div element</p>
-</div>
-<script>
-   document .querySelector(".toggleDisplay") .addEventListener("click", toggleDivDisplay);
-   function toggleDivDisplay() {
-      var x = document.querySelector(".div-visible");
-      if (x.style.display === "none") {
-         x.style.display = "block";
-      } else {
-         x.style.display = "none";
-      }
-   }
-        // $("#testing").hide();
-        // let x = document.getElementByID("testing");
-        // x.style.display = 'block';
-    </script>
+
+    <h1>Toggle hide and show example</h1>
+    <button class="toggleDisplay">Hide Div</button>
+    <h2>Click on the above button to hide the div below</h2>
+    <div class="div-visible">
+        <p>This is a div element</p>
+    </div>
     <p>Testing</p>
     <div id="testing">
-        <p>This is inside the Div</p>
+        <p>I dont want this to show</p>
     </div>
+
+    <script>
+        document.querySelector("#testing").style.display = "none";
+        document.querySelector(".toggleDisplay").addEventListener("click", toggleDivDisplay);
+        function toggleDivDisplay() {
+            var x = document.querySelector(".div-visible");
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                document.querySelector('#testing').style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        // $("#testing").hide();
+        // let y = document.querySelector("#testing");
+        // y.style.display = "block";
+    </script>
+
 </body>
 
 </html>

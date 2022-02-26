@@ -15,23 +15,62 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
 
     <style type="text/css">
-        /* #toMetric {
-            display: none;
-        }
 
-        #showTimes {
-            display: none;
-        } */
     </style>
 </head>
 
 <body>
+    <h1>Current Metric Time</h1>
+    <h1 id="sendTime"></h1>
+    <h1 id="sendDate"></h1>
+    <br>
 
+    <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
+    <div id="toMetric">
+        <!-- TODO: Get input from dropdown menu -->
+
+        <!-- <form> -->
+        <label for="newtime">Date and time to convert from </label>
+        <input type="datetime-local" id="newtime" name="newtime" value="">
+        <input id="choosetime" type="submit" value="Submit">
+        <!-- </form> -->
+
+        <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
+        <label for="month">Month: </label>
+        <select name="month" id="month">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select> -->
+        <!-- <p>Date: <input type="number" id="date" name="date" value=""></p>
+        <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p> -->
+
+        <!-- retrieve date and time with HTML input https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_datetime-local-->
+
+        <!-- Print Results -->
+        <!-- <button id="revealTime">Submit</button> -->
+        <div id="showTimes">
+            <h2>Converted Metric Time</h2>
+            <p id="convTime">time shows here</p>
+            <p id="convDate">date shows here</p>
+        </div>
+
+    </div>
     <script>
         const OFFSET = 3;  // arbitrary for now
-        // $("#toMetric").hide();  // these don't seem to be working
+        $("#toMetric").hide();  // these don't seem to be working
         $("#showTimes").hide();
-        document.getElementById("toMetric").style.display = "block";
+        // document.querySelector("#showTimes").style.display = "none";
+        // document.querySelector("#toMetric").style.display = "none";
         startTime();
 
         // Uncover the converter dialogue
@@ -46,9 +85,19 @@
                         // inputs of time
                         newTime = $("#newtime").val();
                         console.log("Text: " + newTime);
-                        // inputs of time
-                        newTime = $("#newtime").val();
-                        console.log("Text: " + newTime);
+                        // Parse time from returned field  2022-02-10T17:30
+                        let nYear = ;
+                        let nMonth = ();
+                        let nDate = ; //not zero-based
+                        // let nTimeZone = -8;  //time.getTimeZoneOffset()/60
+                        // let dayLightSav = 0; //Standard time = 0, daylight saving = -1
+                        let nHours = ;   //time.getHours() + OFFSET + nTimeZone;
+                        let nMins = ;    //time.getMinutes();
+
+                        // Calculate new time
+                        // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
+                        // let nt = convertTime(time); // will need to change to newTime
+
                         // show converted time
                         $("#showTimes").show();
                         $('#convTime').text('this is the converted time');  // Remove this later
@@ -141,51 +190,7 @@
 
     </script>
 
-    <h1>Current Metric Time</h1>
-    <h1 id="sendTime"></h1>
-    <h1 id="sendDate"></h1>
-    <br>
 
-    <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
-    <div id="toMetric">
-        <!-- TODO: Get input from dropdown menu -->
-
-        <!-- <form> -->
-            <label for="newtime">Date and time to convert from </label>
-            <input type="datetime-local" id="newtime" name="newtime" value="">
-            <input id="choosetime" type="submit" value="Submit">
-        <!-- </form> -->
-
-        <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
-        <label for="month">Month: </label>
-        <select name="month" id="month">
-            <option value="0">January</option>
-            <option value="1">February</option>
-            <option value="2">March</option>
-            <option value="3">April</option>
-            <option value="4">May</option>
-            <option value="5">June</option>
-            <option value="6">July</option>
-            <option value="7">August</option>
-            <option value="8">September</option>
-            <option value="9">October</option>
-            <option value="10">November</option>
-            <option value="11">December</option>
-        </select> -->
-        <!-- <p>Date: <input type="number" id="date" name="date" value=""></p>
-        <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p> -->
-
-        <!-- retrieve date and time with HTML input https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_datetime-local-->
-
-        <!-- Print Results -->
-        <!-- <button id="revealTime">Submit</button> -->
-        <div id="showTimes">
-            <h2>Converted Metric Time</h2>
-            <p id="convTime">time shows here</p>
-            <p id="convDate">date shows here</p>
-        </div>
-
-    </div>
 
 </body>
 
