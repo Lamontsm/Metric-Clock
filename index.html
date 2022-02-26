@@ -86,13 +86,14 @@
                         newTime = $("#newtime").val();
                         console.log("Text: " + newTime);
                         // Parse time from returned field  2022-02-10T17:30
-                        let nYear = ;
-                        let nMonth = ();
-                        let nDate = ; //not zero-based
+                        let nYear = newTime.slice(0,4);
+                        console.log("year is " + nYear);
+                        let nMonth ;
+                        let nDate  ; //not zero-based
                         // let nTimeZone = -8;  //time.getTimeZoneOffset()/60
                         // let dayLightSav = 0; //Standard time = 0, daylight saving = -1
-                        let nHours = ;   //time.getHours() + OFFSET + nTimeZone;
-                        let nMins = ;    //time.getMinutes();
+                        let nHours  ;   //time.getHours() + OFFSET + nTimeZone;
+                        let nMins  ;    //time.getMinutes();
 
                         // Calculate new time
                         // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
