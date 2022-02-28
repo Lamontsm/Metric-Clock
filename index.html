@@ -29,12 +29,24 @@
     <div id="toMetric">
         <!-- TODO: Get input from dropdown menu -->
 
-        <!-- <form> -->
         <label for="newtime">Date and time to convert from </label>
+        <br>
         <input type="datetime-local" id="newtime" name="newtime" value="">
-        <input id="choosetime" type="submit" value="Submit">
-        <!-- </form> -->
+        <br>
 
+        <label for="timezone">Choose a timezone:</label>
+        <br>
+        <select name="timezone" id="timezone">
+            <option value="+1">Central European GMT+1</option>
+<!-- 
+Fill these out -->
+
+            <option value="2">Eastern European GMT+2</option>
+            <option value="-8">Pacific Time GMT-8</option>
+            <option value="audi">Audi</option>
+        </select>
+        <br>
+        <input id="choosetime" type="submit" value="Submit">
         <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
         <label for="month">Month: </label>
         <select name="month" id="month">
@@ -84,17 +96,17 @@
                     $("#choosetime").click(function () {
                         // inputs of time
                         newTime = $("#newtime").val();
-                        console.log("Text: " + newTime);
+                        console.log("Text: " + newTime);  //Remove later
                         // Parse time from returned field  2022-02-10T17:30
-                        let nYear = newTime.slice(0,4);
-                        console.log("year is " + nYear);
-                        let nMonth ;
-                        let nDate  ; //not zero-based
-                        // let nTimeZone = -8;  //time.getTimeZoneOffset()/60
-                        // let dayLightSav = 0; //Standard time = 0, daylight saving = -1
-                        let nHours  ;   //time.getHours() + OFFSET + nTimeZone;
-                        let nMins  ;    //time.getMinutes();
-
+                        let nYear = newTime.slice(0, 4);
+                        let nMonth = newTime.slice(5, 7) - 1;
+                        let nDate = newTime.slice(8, 10); //not zero-based
+                        let nTimeZone = $('#timezone').val();  //time.getTimeZoneOffset()/60
+                        console.log('timezone = ' + nTimeZone);
+                        let dayLightSav = 0; //Standard time = 0, daylight saving = -1
+                        let nHours = newTime.slice(11, 13);   //time.getHours() + OFFSET + nTimeZone;
+                        let nMins = newTime.slice(14, 16);    //time.getMinutes();
+                        console.log(nYear + ' ' + nMonth + ' ' + nDate + ' ' + nHours + ' ' + nMins);
                         // Calculate new time
                         // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
                         // let nt = convertTime(time); // will need to change to newTime
