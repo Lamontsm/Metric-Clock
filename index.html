@@ -71,10 +71,12 @@
         </select>
         <br>
         <label>Note whether daylight savings (summer) or not</label><br>
-        Regular Time<input type="radio" id="regular" value="0">
-        Daylight Savings<input type="radio" id="daylight" value="-1"><br>
+        Regular Time<input type="radio" name='timeShift' id="timeShift" value="0">
+        Daylight Savings<input type="radio" name='timeShift' id="timeShift" value="-1"><br>
         <input id="choosetime" type="submit" value="Submit">
-        
+
+
+
         <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
         <label for="month">Month: </label>
         <select name="month" id="month">
@@ -131,9 +133,14 @@
                         let nHours = newTime.slice(11, 13);   //time.getHours() + OFFSET + nTimeZone;
                         let nMins = newTime.slice(14, 16);    //time.getMinutes();
                         let nTimeZone = $('#timezone').val();  //time.getTimeZoneOffset()/60
-
-                        let dayLightSav = 0; //Standard time = 0, daylight saving = -1
-
+                        let dayLightSav = $("input[name='timeShift']:checked").val();
+                // *
+                // Need to fix the nHours calculation. Multiplying by 100 somewhere?
+                // *
+                        console.log('Hours before: ' + nHours);
+                        console.log('nTimeZone: ' + nTimeZone + ' Offset: ' + OFFSET + ' dls: ' + dayLightSav);
+                        nHours = nHours + nTimeZone + dayLightSav - OFFSET;
+                        console.log('Hours after: ' + nHours);
                         console.log(nYear + ' ' + nMonth + ' ' + nDate + ' ' + nHours + ' ' + nMins);
                         // Calculate new time
                         // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
