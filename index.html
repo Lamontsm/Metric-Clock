@@ -75,31 +75,6 @@
         Daylight Savings<input type="radio" name='timeShift' id="timeShift" value="-1"><br>
         <input id="choosetime" type="submit" value="Submit">
 
-
-
-        <!-- <p>Year: <input type="number" id="year" name="year" value=""></p>
-        <label for="month">Month: </label>
-        <select name="month" id="month">
-            <option value="0">January</option>
-            <option value="1">February</option>
-            <option value="2">March</option>
-            <option value="3">April</option>
-            <option value="4">May</option>
-            <option value="5">June</option>
-            <option value="6">July</option>
-            <option value="7">August</option>
-            <option value="8">September</option>
-            <option value="9">October</option>
-            <option value="10">November</option>
-            <option value="11">December</option>
-        </select> -->
-        <!-- <p>Date: <input type="number" id="date" name="date" value=""></p>
-        <p>Time Zone: <input type="text" id="timeZone" value="Pacific"></p> -->
-
-        <!-- retrieve date and time with HTML input https://www.w3schools.com/html/tryit.asp?filename=tryhtml_input_datetime-local-->
-
-        <!-- Print Results -->
-        <!-- <button id="revealTime">Submit</button> -->
         <div id="showTimes">
             <h2>Converted Metric Time</h2>
             <p id="convTime">time shows here</p>
@@ -108,8 +83,8 @@
 
     </div>
     <script>
-        const OFFSET = 3;  // arbitrary for now
-        $("#toMetric").hide();  // these don't seem to be working
+        const OFFSET = Number(-3);  // arbitrary for now
+        $("#toMetric").hide();  
         $("#showTimes").hide();
 
         startTime();
@@ -130,89 +105,36 @@
                         let nYear = newTime.slice(0, 4);
                         let nMonth = newTime.slice(5, 7) - 1;
                         let nDate = newTime.slice(8, 10); //not zero-based
-                        let nHours = newTime.slice(11, 13);   //time.getHours() + OFFSET + nTimeZone;
+                        let nHours = Number(newTime.slice(11, 13));   //time.getHours() + OFFSET + nTimeZone;
                         let nMins = newTime.slice(14, 16);    //time.getMinutes();
-                        let nTimeZone = $('#timezone').val();  //time.getTimeZoneOffset()/60
-                        let dayLightSav = $("input[name='timeShift']:checked").val();
-                // *
-                // Need to fix the nHours calculation. Multiplying by 100 somewhere?
-                // *
-                        console.log('Hours before: ' + nHours);
+                        let nTimeZone = Number($('#timezone').val());  //time.getTimeZoneOffset()/60
+                        let dayLightSav = Number($("input[name='timeShift']:checked").val());
+
+                        console.log('Hours before: ' + nHours + typeof nHours);
                         console.log('nTimeZone: ' + nTimeZone + ' Offset: ' + OFFSET + ' dls: ' + dayLightSav);
-                        nHours = nHours + nTimeZone + dayLightSav - OFFSET;
+                        nHours = nHours + OFFSET - nTimeZone + dayLightSav;
                         console.log('Hours after: ' + nHours);
                         console.log(nYear + ' ' + nMonth + ' ' + nDate + ' ' + nHours + ' ' + nMins);
+                        
                         // Calculate new time
-                        // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
-                        // let nt = convertTime(time); // will need to change to newTime
+                        newTime = new Date(nYear, nMonth, nDate, nHours, nMins);
+                        let nt = convertTime(newTime); 
 
                         // show converted time
                         $("#showTimes").show();
-                        $('#convTime').text('this is the converted time');  // Remove this later
-                        // $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'));
-                        // $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
-
+                        $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0'));
+                        $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
                     });
                 });
             });
         });
-
-        // Convert input time to metric  
-        // Don't need this with the date-time function
-        // time = new Date();  // For plugging in the defaults
-        // let nYear = time.getFullYear();
-        // let nMonth = time.getMonth();
-        // let nDate = time.getDate(); //not zero-based
-        // let nTimeZone = -8;  //time.getTimeZoneOffset()/60
-        // let dayLightSav = 0; //Standard time = 0, daylight saving = -1
-        // let nHours = 22;   //time.getHours() + OFFSET + nTimeZone;
-        // let nMins = 0;    //time.getMinutes();
-        // let nSecs = 0;    //time.getSeconds();
-        // let newTime;
-
-        // Get inputs of time to convert
-        // $(document).ready(function () {
-        //     $("#choosetime").click(function () {
-        //         // inputs of time
-        //         newTime = $("#newtime").val();
-        //         console.log("Text: " + newTime);
-        //     });
-        // });
-
-        // $(document).ready(function () {
-        //     $('#year').val(nYear);
-        //     $('#month').val(nMonth);
-        //     $('#date').val(nDate);
-
-        //     $("#Submit").click(function () {
-        //         nYear = $("#year").val();
-        //         nMonth = $("#month").val();
-        //         nDate = $("#date").val();
-        //         alert("Date is " + nDate);
-        //     });
-
-        // TODO: Now do the other inputs
-        // });
-
-        // Calculate new time
-        // newTime = new Date(nYear, nMonth, nDate, nHours - OFFSET - nTimeZone + dayLightSav, nMins, nSecs);
-        // let nt = convertTime(time); // will need to change to newTime
-        // Output converted metric time
-        // $(document).ready(function () {
-        //     $("#choosetime").click(function () {
-        //         // show converted time
-        //         $("#showTimes").show();
-        //         $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0') + ":" + nt.msecs.toString().padStart(3, '0'));
-        //         $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
-        //     });
-        // });
 
         function startTime() {
 
             // //Calculate current Metric time
             let curTime = new Date();
             let timeZone = curTime.getTimezoneOffset() / (-60);        //PT is -8           
-            curTime.setHours(curTime.getHours() - OFFSET - timeZone);
+            curTime.setHours(curTime.getHours() + OFFSET - timeZone);
             let mt = convertTime(curTime);
 
             $("#sendTime").text(mt.mhrs + ":" + mt.mmins.toString().padStart(2, '0') + ":" + mt.msecs.toString().padStart(3, '0'));
@@ -235,11 +157,6 @@
             t.msecs = Math.floor(remain);
             return t;
         }
-
     </script>
-
-
-
 </body>
-
 </html>
