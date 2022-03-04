@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Metric Clock</title>
 
@@ -10,31 +11,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <style type="text/css">
-
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        body {
+            text-align: center
+        }
+        .btn {
+            text-align: center
+        }
+        .title {
+            color: indigo;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Current Metric Time</h1>
-    <h1 id="sendTime"></h1>
-    <h1 id="sendDate"></h1>
+    <h1 class='title'>Current Metric Time</h1>
+    <h2 id="sendTime"></h2>
+    <h2 id="sendDate"></h2>
     <br>
 
     <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
     <div id="toMetric">
 
-        <label for="newtime">Date and time to convert from </label>
+        <label for="newtime">
+            <h2 class='title'>Date and time to convert from</h2>
+        </label>
         <br>
         <input type="datetime-local" id="newtime" name="newtime" value="">
         <br>
 
-        <label for="timezone">Choose a timezone:</label>
+        <label for="timezone">
+            <h3 class='title'>Choose a timezone:</h3>
+        </label>
         <br>
-        <select name="timezone" id="timezone">
+        <select class='dropdown' name="timezone" id="timezone">
             <option value='0'> GMT Greenwich Mean Time GMT </option>
             <option value='0'> UTC Universal Coordinated Time GMT </option>
             <option value='1'> ECT European Central Time GMT+1:00 </option>
@@ -69,21 +88,24 @@
             <option value='-1'> CAT Central African Time GMT-1:00 </option>
         </select>
         <br>
-        <label>Note whether daylight savings (summer) or not</label><br>
-        Regular Time<input type="radio" name='timeShift' id="timeShift" value="0">
-        Daylight Savings<input type="radio" name='timeShift' id="timeShift" value="-1"><br>
-        <input id="choosetime" type="submit" value="Submit">
+        <label>
+            <h3 class='title'>Daylight savings (summer) or not?</h2>
+        </label><br>
+        <b>Regular Time </b><input type="radio" name='timeShift' id="timeShift" value="0">
+        <b>Daylight Savings </b><input type="radio" name='timeShift' id="timeShift" value="-1">
+        <br><br>
+        <input id="choosetime" type="submit" class="btn btn-success hitme hideme" value="Submit">
 
         <div id="showTimes">
-            <h2>Converted Metric Time</h2>
-            <p id="convTime">time shows here</p>
-            <p id="convDate">date shows here</p>
+            <h2 class='title'>Converted Metric Time</h2>
+            <h2 id="convTime">time</h2>
+            <h2 id="convDate">date</h2>
         </div>
 
     </div>
     <script>
         const OFFSET = Number(-3);  // arbitrary for now
-        $("#toMetric").hide();  
+        $("#toMetric").hide();
         $("#showTimes").hide();
 
         startTime();
@@ -114,11 +136,14 @@
                         nHours = nHours + OFFSET - nTimeZone + dayLightSav;
                         console.log('Hours after: ' + nHours);
                         console.log(nYear + ' ' + nMonth + ' ' + nDate + ' ' + nHours + ' ' + nMins);
-                        
+
                         // Calculate new time
                         newTime = new Date(nYear, nMonth, nDate, nHours, nMins);
-                        let nt = convertTime(newTime); 
-
+                        let nt = convertTime(newTime);
+                        console.log('mHours: ' + nt.mhrs);
+                        if (isNaN(nt.mhrs)) {
+                            console.log('you blew it');  //TODO Fix error message somehow
+                        }
                         // show converted time
                         $("#showTimes").show();
                         $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0'));
@@ -158,4 +183,5 @@
         }
     </script>
 </body>
+
 </html>
