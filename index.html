@@ -104,7 +104,7 @@
 
     </div>
     <script>
-        const OFFSET = Number(-3);  // arbitrary for now
+        const OFFSET = Number(-8);  // arbitrary for now
         $("#toMetric").hide();
         $("#showTimes").hide();
 
@@ -126,9 +126,9 @@
                         let nYear = newTime.slice(0, 4);
                         let nMonth = newTime.slice(5, 7) - 1;
                         let nDate = newTime.slice(8, 10); //not zero-based
-                        let nHours = Number(newTime.slice(11, 13));   //time.getHours() + OFFSET + nTimeZone;
-                        let nMins = newTime.slice(14, 16);    //time.getMinutes();
-                        let nTimeZone = Number($('#timezone').val());  //time.getTimeZoneOffset()/60
+                        let nHours = Number(newTime.slice(11, 13)); 
+                        let nMins = newTime.slice(14, 16);    
+                        let nTimeZone = Number($('#timezone').val()); 
                         let dayLightSav = Number($("input[name='timeShift']:checked").val());
 
                         console.log('Hours before: ' + nHours + typeof nHours);
@@ -142,12 +142,17 @@
                         let nt = convertTime(newTime);
                         console.log('mHours: ' + nt.mhrs);
                         if (isNaN(nt.mhrs)) {
-                            console.log('you blew it');  //TODO Fix error message somehow
+                            timeOut = "Error. Please include all the information then hit Submit again";  
+                            dateOut = '';
+                        }
+                        else {
+                            timeOut = nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0');
+                            dateOut = nt.day + " " + nt.date + " " + nt.month + " " + nt.year;
                         }
                         // show converted time
                         $("#showTimes").show();
-                        $("#convTime").text(nt.mhrs + ":" + nt.mmins.toString().padStart(2, '0'));
-                        $("#convDate").text(nt.day + " " + nt.date + " " + nt.month + " " + nt.year);
+                        $("#convTime").text(timeOut);
+                        $("#convDate").text(dateOut);
                     });
                 });
             });
