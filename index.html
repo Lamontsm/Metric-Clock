@@ -15,18 +15,10 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <style type="text/css">
-        h1 {
+        .middle {
             text-align: center;
         }
-        h2 {
-            text-align: center;
-        }
-        body {
-            text-align: center
-        }
-        .btn {
-            text-align: center
-        }
+
         .title {
             color: indigo;
         }
@@ -34,74 +26,75 @@
 </head>
 
 <body>
-    <h1 class='title'>Current Metric Time</h1>
-    <h2 id="sendTime"></h2>
-    <h2 id="sendDate"></h2>
-    <br>
-
-    <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
-    <div id="toMetric">
-
-        <label for="newtime">
-            <h2 class='title'>Date and time to convert from</h2>
-        </label>
-        <br>
-        <input type="datetime-local" id="newtime" name="newtime" value="">
+    <div class="middle">
+        <h2 class="title middle">Current Metric Time</h2>
+        <h3 id="sendTime" class="middle"></h3>
+        <h3 id="sendDate" class="middle"></h3>
         <br>
 
-        <label for="timezone">
-            <h3 class='title'>Choose a timezone:</h3>
-        </label>
-        <br>
-        <select class='dropdown' name="timezone" id="timezone">
-            <option value='0'> GMT Greenwich Mean Time GMT </option>
-            <option value='0'> UTC Universal Coordinated Time GMT </option>
-            <option value='1'> ECT European Central Time GMT+1:00 </option>
-            <option value='2'> EET Eastern European Time GMT+2:00 </option>
-            <option value='2'> ART (Arabic) Egypt Standard Time GMT+2:00 </option>
-            <option value='3'> EAT Eastern African Time GMT+3:00 </option>
-            <option value='3.5'> MET Middle East Time GMT+3:30 </option>
-            <option value='4'> NET Near East Time GMT+4:00 </option>
-            <option value='5'> PLT Pakistan Lahore Time GMT+5:00 </option>
-            <option value='5.5'> IST India Standard Time GMT+5:30 </option>
-            <option value='6'> BST Bangladesh Standard Time GMT+6:00 </option>
-            <option value='7'> VST Vietnam Standard Time GMT+7:00 </option>
-            <option value='8'> CTT China Taiwan Time GMT+8:00 </option>
-            <option value='9'> JST Japan Standard Time GMT+9:00 </option>
-            <option value='9.5'> ACT Australia Central Time GMT+9:30 </option>
-            <option value='10'> AET Australia Eastern Time GMT+10:00 </option>
-            <option value='11'> SST Solomon Standard Time GMT+11:00 </option>
-            <option value='12'> NST New Zealand Standard Time GMT+12:00 </option>
-            <option value='-11'> MIT Midway Islands Time GMT-11:00 </option>
-            <option value='-10'> HST Hawaii Standard Time GMT-10:00 </option>
-            <option value='-9'> AST Alaska Standard Time GMT-9:00 </option>
-            <option value='-8'> PST Pacific Standard Time GMT-8:00 </option>
-            <option value='-7'> PNT Phoenix Standard Time GMT-7:00 </option>
-            <option value='-7'> MST Mountain Standard Time GMT-7:00 </option>
-            <option value='-6'> CST Central Standard Time GMT-6:00 </option>
-            <option value='-5'> EST Eastern Standard Time GMT-5:00 </option>
-            <option value='-5'> IET Indiana Eastern Standard Time GMT-5:00 </option>
-            <option value='-4'> PRT Puerto Rico and US Virgin Islands Time GMT-4:00 </option>
-            <option value='-3.5'> CNT Canada Newfoundland Time GMT-3:30 </option>
-            <option value='-3'> AGT Argentina Standard Time GMT-3:00 </option>
-            <option value='-3'> BET Brazil Eastern Time GMT-3:00 </option>
-            <option value='-1'> CAT Central African Time GMT-1:00 </option>
-        </select>
-        <br>
-        <label>
-            <h3 class='title'>Daylight savings (summer) or not?</h2>
-        </label><br>
-        <b>Regular Time </b><input type="radio" name='timeShift' id="timeShift" value="0">
-        <b>Daylight Savings </b><input type="radio" name='timeShift' id="timeShift" value="-1">
-        <br><br>
-        <input id="choosetime" type="submit" class="btn btn-success hitme hideme" value="Submit">
+        <button type="button" id="convertTo" class="btn btn-primary hitme hideme">Convert to Metric Time</button>
+        <div id="toMetric">
 
-        <div id="showTimes">
-            <h2 class='title'>Converted Metric Time</h2>
-            <h2 id="convTime">time</h2>
-            <h2 id="convDate">date</h2>
+            <label for="newtime">
+                <h3 class="title">Date and time to convert from</h3>
+            </label>
+            <br>
+            <input type="datetime-local" id="newtime" name="newtime" value="">
+            <br>
+
+            <label for="timezone">
+                <h3 class="title">Choose a timezone:</h3>
+            </label>
+            <br>
+            <select class="dropdown" name="timezone" id="timezone">
+                <option value='0'> GMT Greenwich Mean Time GMT </option>
+                <option value='0'> UTC Universal Coordinated Time GMT </option>
+                <option value='1'> ECT European Central Time GMT+1:00 </option>
+                <option value='2'> EET Eastern European Time GMT+2:00 </option>
+                <option value='2'> ART (Arabic) Egypt Standard Time GMT+2:00 </option>
+                <option value='3'> EAT Eastern African Time GMT+3:00 </option>
+                <option value='3.5'> MET Middle East Time GMT+3:30 </option>
+                <option value='4'> NET Near East Time GMT+4:00 </option>
+                <option value='5'> PLT Pakistan Lahore Time GMT+5:00 </option>
+                <option value='5.5'> IST India Standard Time GMT+5:30 </option>
+                <option value='6'> BST Bangladesh Standard Time GMT+6:00 </option>
+                <option value='7'> VST Vietnam Standard Time GMT+7:00 </option>
+                <option value='8'> CTT China Taiwan Time GMT+8:00 </option>
+                <option value='9'> JST Japan Standard Time GMT+9:00 </option>
+                <option value='9.5'> ACT Australia Central Time GMT+9:30 </option>
+                <option value='10'> AET Australia Eastern Time GMT+10:00 </option>
+                <option value='11'> SST Solomon Standard Time GMT+11:00 </option>
+                <option value='12'> NST New Zealand Standard Time GMT+12:00 </option>
+                <option value='-11'> MIT Midway Islands Time GMT-11:00 </option>
+                <option value='-10'> HST Hawaii Standard Time GMT-10:00 </option>
+                <option value='-9'> AST Alaska Standard Time GMT-9:00 </option>
+                <option value='-8'> PST Pacific Standard Time GMT-8:00 </option>
+                <option value='-7'> PNT Phoenix Standard Time GMT-7:00 </option>
+                <option value='-7'> MST Mountain Standard Time GMT-7:00 </option>
+                <option value='-6'> CST Central Standard Time GMT-6:00 </option>
+                <option value='-5'> EST Eastern Standard Time GMT-5:00 </option>
+                <option value='-5'> IET Indiana Eastern Standard Time GMT-5:00 </option>
+                <option value='-4'> PRT Puerto Rico and US Virgin Islands Time GMT-4:00 </option>
+                <option value='-3.5'> CNT Canada Newfoundland Time GMT-3:30 </option>
+                <option value='-3'> AGT Argentina Standard Time GMT-3:00 </option>
+                <option value='-3'> BET Brazil Eastern Time GMT-3:00 </option>
+                <option value='-1'> CAT Central African Time GMT-1:00 </option>
+            </select>
+            <br>
+            <label>
+                <h3 class='title'>Daylight savings (summer) or not?</h2>
+            </label><br>
+            <b>Regular Time </b><input type="radio" name='timeShift' id="timeShift" value="0">
+            <b>Daylight Savings </b><input type="radio" name='timeShift' id="timeShift" value="-1">
+            <br><br>
+            <input id="choosetime" type="submit" class="btn btn-success hitme hideme" value="Submit">
+
+            <div id="showTimes">
+                <h3 class='title'>Converted Metric Time</h3>
+                <h3 id="convTime">time</h3>
+                <h3 id="convDate">date</h3>
+            </div>
         </div>
-
     </div>
     <script>
         const OFFSET = Number(-8);  // arbitrary for now
@@ -126,23 +119,19 @@
                         let nYear = newTime.slice(0, 4);
                         let nMonth = newTime.slice(5, 7) - 1;
                         let nDate = newTime.slice(8, 10); //not zero-based
-                        let nHours = Number(newTime.slice(11, 13)); 
-                        let nMins = newTime.slice(14, 16);    
-                        let nTimeZone = Number($('#timezone').val()); 
+                        let nHours = Number(newTime.slice(11, 13));
+                        let nMins = newTime.slice(14, 16);
+                        let nTimeZone = Number($('#timezone').val());
                         let dayLightSav = Number($("input[name='timeShift']:checked").val());
 
-                        console.log('Hours before: ' + nHours + typeof nHours);
-                        console.log('nTimeZone: ' + nTimeZone + ' Offset: ' + OFFSET + ' dls: ' + dayLightSav);
                         nHours = nHours + OFFSET - nTimeZone + dayLightSav;
-                        console.log('Hours after: ' + nHours);
-                        console.log(nYear + ' ' + nMonth + ' ' + nDate + ' ' + nHours + ' ' + nMins);
 
                         // Calculate new time
                         newTime = new Date(nYear, nMonth, nDate, nHours, nMins);
                         let nt = convertTime(newTime);
                         console.log('mHours: ' + nt.mhrs);
                         if (isNaN(nt.mhrs)) {
-                            timeOut = "Error. Please include all the information then hit Submit again";  
+                            timeOut = "Error. Please include all the information then hit Submit again";
                             dateOut = '';
                         }
                         else {
